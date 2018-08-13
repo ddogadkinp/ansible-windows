@@ -12,3 +12,6 @@ powershell -Command "(New-Object Net.WebClient).DownloadFile('https://cygwin.com
 --wait ^
 --packages curl,python2,python2-devel,python2-setuptools,python2-crypto,python2-pip,openssl,openssl-devel,libffi-devel,gcc-g++,vim,git,make
 
+
+C:\cygwin64\bin\run.exe python -m pip install --upgrade pip
+C:\cygwin64\bin\run.exe python -m pip install pipenv
