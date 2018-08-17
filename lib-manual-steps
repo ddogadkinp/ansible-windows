@@ -1,0 +1,22 @@
+1. Setup git repo
+
+cd /mnt/c/Users/ddogadkin/
+mkdir learn-ansible
+cd learn-ansible
+git init
+git remote add upstream ssh://git@bitbucket.rccl.com:7999/devops/library.git
+
+2. Setup ssh keys
+ssh-keygen -t rsa -C "ddogadkin@rccl.com"
+
+3. Pull code
+git pull upstream sandbox/winee10
+
+
+
+
+
+Invoke-WebRequest -Uri https://aka.ms/wsl-ubuntu-1604 -OutFile Ubuntu.appx -UseBasicParsing
+Rename-Item ~/Ubuntu.appx ~/Ubuntu.zip
+Expand-Archive ~/Ubuntu.zip ~/Ubuntu
+ubuntu.exe
