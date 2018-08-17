@@ -1,0 +1,49 @@
+1. Installation process (time it)
+2. Tools being used:
+	vbox
+	vagrant
+3. What is ansible:
+	1. A tool that allows to programmatically configure systems over ssh connection
+		a. A tool:
+			- ansible is installed as a group of commands that together represent server configuration framework
+			- 	ansible
+					ansible localhost -m command -a "whoami"
+				ansible-playbook
+				ansible-vault
+				ansible-galaxy
+				ansible-inventory
+
+		b. Programmatically:
+			1. Ansible is a tool that uses configuration file that will be applied to a system
+			2. Configuration file uses YAML syntax to structuring its content
+			3. YAML syntax allows to organize the configuration file into declarative content
+			3. In ansible YAML keys have a specific meaning that effects the configuration
+
+		c. Configure:
+			1. Install packages through yum and apt-get
+			2. Start or stop services
+			3. Change file persmissions
+			4. Setup networking interfaces
+			5. Setup firewall
+			and so on
+4. Inventories - purpose
+	Going to store the information about the servers such as:
+	a. Hosts - located at the top of the ini formated file for the inventory
+		- aliases
+		- host
+		- port
+		- user
+		- ssh settings
+	b. Host groups
+	c. Group variables
+	How ansible uses inventories with ad hoc ansible
+	ansible webservers -m command -a "whoami"
+	ansible dbservers -i inventories/localdev/hosts -m command -a "cat /etc/issue"
+	ansible dbservers -i inventories/localdev/hosts -m apt -a "name=apache2 state=present update_cache=true" --become
+	ansible dbservers -i inventories/localdev/hosts -m service -a "name=httpd state=started" --become
+5. Playbooks - a configuration file used to configure a complete environment
+	a. Play
+	b. Task
+	c. Module
+6. Library code - repo organization
+7. Documentation site
