@@ -1,0 +1,40 @@
+---
+- hosts: webservers
+  vars:
+    service_name: apache2
+  tasks:
+    - name: Install "{{ service_name }}" service
+      apt: 
+        state: present
+        name: "{{ service_name }}"
+        update_cache: true
+      become: true
+
+    - name: Start "{{ service_name }}"
+      service:
+        name: "{{ service_name }}"
+        state: started
+        enabled: true
+      become: true
+
+- hosts: dbservers
+  vars:
+    package_name:
+      - python-mysqldb
+      - mysql-server
+    service_name: mysql
+  tasks:
+    - name: Install "{{ service_name }}" service
+      apt: 
+        state: present
+        name: "{{ item }}"
+        update_cache: true
+      with_items: "{{ package_name }}" 
+      become: true
+      
+    - name: Start "{{ service_name }}"
+      service:
+        name: "{{ service_name }}"
+        state: started
+        enabled: true
+      become: true
